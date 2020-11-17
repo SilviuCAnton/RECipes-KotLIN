@@ -29,9 +29,11 @@ abstract class TodoDatabase : RoomDatabase() {
                 Room.databaseBuilder(
                     context.applicationContext,
                     TodoDatabase::class.java,
-                    "recipesdb"
+                    "recipesdb3"
                 )
                     .addCallback(WordDatabaseCallback(scope))
+                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
                     .build()
             INSTANCE = instance
             return instance

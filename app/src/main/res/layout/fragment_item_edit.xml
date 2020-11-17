@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     tools:context="com.rec.recipes.item.ItemEditFragment">
 
-    <EditText
+    <TextView
         android:background="@android:color/transparent"
         android:id="@+id/nameLabel"
         android:layout_width="122dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="none"
+        android:focusable="false"
         android:layout_marginLeft="60dp"
         android:text="Name" />
 
@@ -24,18 +25,18 @@
         android:layout_toRightOf="@id/nameLabel"
         android:text="" />
 
-    <EditText
-        android:background="@android:color/transparent"
+
+    <TextView
         android:id="@+id/descriptionLabel"
         android:layout_width="122dp"
         android:layout_height="63dp"
         android:layout_below="@id/nameLabel"
-        android:layout_marginTop="34dp"
         android:layout_marginLeft="60dp"
+        android:layout_marginTop="73dp"
+        android:background="@android:color/transparent"
         android:ems="10"
         android:inputType="none"
         android:text="Description" />
-
 
     <EditText
         android:id="@+id/item_description"
@@ -47,14 +48,14 @@
         android:layout_toRightOf="@+id/descriptionLabel"
         android:text="" />
 
-    <EditText
+    <TextView
         android:id="@+id/caloriesLabel"
-        android:background="@android:color/transparent"
         android:layout_width="115dp"
         android:layout_height="35dp"
         android:layout_below="@id/descriptionLabel"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="130dp"
+        android:background="@android:color/transparent"
         android:ems="10"
         android:inputType="none"
         android:text="Calories" />
@@ -64,8 +65,8 @@
         android:layout_width="115dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/descriptionLabel"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="124dp"
         android:layout_toRightOf="@+id/caloriesLabel"
         android:text="" />
 

@@ -80,7 +80,7 @@ class ItemEditFragment : Fragment() {
         }
         val id = itemId
         if (id == null) {
-            item = Item("", "", "", 0)
+            item = Item("", "", "", 0, "")
         } else {
             viewModel.getItemById(id).observe(viewLifecycleOwner) {
                 Log.v(TAG, "update items")

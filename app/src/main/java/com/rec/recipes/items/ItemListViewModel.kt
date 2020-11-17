@@ -23,7 +23,7 @@ class ItemListViewModel(application: Application) : AndroidViewModel(application
     init {
         val itemDao = TodoDatabase.getDatabase(application, viewModelScope).itemDao()
         itemRepository = ItemRepository(itemDao)
-        items = itemRepository.items
+        items = itemRepository.recipes
     }
 
     fun refresh() {

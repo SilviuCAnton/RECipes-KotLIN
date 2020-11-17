@@ -1,7 +1,8 @@
 package com.rec.auth.data
 
-import com.rec.auth.data.remote.RemoteAuthDataSource
+import auth.data.remote.RemoteAuthDataSource
 import com.rec.core.Api
+import com.rec.core.Constants
 import com.rec.core.Result
 
 object AuthRepository {
@@ -17,6 +18,7 @@ object AuthRepository {
 
     fun logout() {
         user = null
+//        Constants.instance()?.deleteValueString("token")
         Api.tokenInterceptor.token = null
     }
 
@@ -29,6 +31,8 @@ object AuthRepository {
         if (result is Result.Success<TokenHolder>) {
             print("Success!!");
             setLoggedInUser(user, result.data)
+            Constants.instance()?.storeValueString("token", result.data.token);
+            Constants.instance()?.storeValueString("_id", result.data._id);
         }
         return result
     }

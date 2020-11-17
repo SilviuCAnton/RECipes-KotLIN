@@ -31,13 +31,34 @@ class ItemEditViewModel(application: Application) : AndroidViewModel(application
         return itemRepository.getById(itemId)
     }
 
+    fun deleteItem(itemId: String){
+        viewModelScope.launch {
+            Log.v(TAG, "deleteItem...");
+            mutableFetching.value = true
+            mutableException.value = null
+            val result: Result<Boolean>
+            result = itemRepository.delete(itemId)
+            when(result) {
+                is Result.Success -> {
+                    Log.d(TAG, "deleteItem succeeded");
+                }
+                is Result.Error -> {
+                    Log.w(TAG, "deleteItem failed", result.exception);
+                    mutableException.value = result.exception
+                }
+            }
+            mutableCompleted.value = true
+            mutableFetching.value = false
+        }
+    }
+
     fun saveOrUpdateItem(item: Item) {
         viewModelScope.launch {
             Log.v(TAG, "saveOrUpdateItem...");
             mutableFetching.value = true
             mutableException.value = null
             val result: Result<Item>
-            if (item.id.isNotEmpty()) {
+            if (item._id.isNotEmpty()) {
                 result = itemRepository.update(item)
             } else {
                 result = itemRepository.save(item)
